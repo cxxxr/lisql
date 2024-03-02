@@ -1,6 +1,7 @@
 (defpackage :lisql
   (:use :cl)
-  (:export :select
+  (:export :now
+           :select
            :insert
            :update))
 (in-package :lisql)
@@ -11,7 +12,10 @@
                    (integer (princ-to-string elt))
                    (string (format nil "'~A'" elt))
                    (symbol elt)
-                   (list (format nil "(~A)" (stringify-with-comma elt))))))
+                   (list
+                    (if (equal elt '(now))
+                        "now()"
+                        (format nil "(~A)" (stringify-with-comma elt)))))))
 
 (defun stringify-with-comma (list)
   (format nil "~{~A~^, ~}"
