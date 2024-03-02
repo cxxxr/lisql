@@ -8,6 +8,7 @@
 (defun stringify-list (list)
   (loop :for elt :in list
         :collect (etypecase elt
+                   (integer (princ-to-string elt))
                    (string (format nil "'~A'" elt))
                    (symbol elt)
                    (list (format nil "(~A)" (stringify-with-comma elt))))))
