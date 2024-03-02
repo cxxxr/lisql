@@ -11,3 +11,14 @@
 (insert into account (name) values ("cxxxr"))
 "INSERT INTO ACCOUNT (NAME) VALUES ('cxxxr')"
 ```
+
+### with CL-DBI
+https://github.com/fukamachi/cl-dbi
+
+```common-lisp
+(defparameter *connection* (dbi:connect :sqlite3 :database-name "/foo/bar/test.sqlite3"))
+(dbi:execute
+  (dbi:prepare *connection*
+    (lisql:SELECT * FROM somewhere WHERE id = ?)) ; <===
+  (list "c49a8035-e59e-49ab-ad80-f51e2cd91001"))
+```
