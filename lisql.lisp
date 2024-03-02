@@ -1,9 +1,11 @@
 (defpackage :lisql
   (:use :cl)
+  (:shadow :delete)
   (:export :now
            :select
            :insert
-           :update))
+           :update
+           :delete))
 (in-package :lisql)
 
 (defun stringify-list (list)
@@ -33,3 +35,6 @@
 
 (defmacro update (&body args)
   `(stringify '(update ,@args)))
+
+(defmacro delete (&body args)
+  `(stringify '(delete ,@args)))
