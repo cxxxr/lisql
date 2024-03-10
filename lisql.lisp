@@ -24,11 +24,11 @@
                            (format nil "(~A)" (stringify-with-comma elt))))))))
 
 (defun stringify-with-comma (list)
-  (format nil "~{~A~^, ~}"
+  (format nil "~(~{~A~^, ~}~)"
           (stringify-list list)))
 
 (defun stringify (list)
-  (format nil "~{~A~^ ~}"
+  (format nil "~(~{~A~^ ~}~)"
           (stringify-list list)))
 
 (defmacro select (&body args)
